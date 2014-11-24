@@ -6,16 +6,11 @@
     android:orientation="horizontal"
     tools:context=".SelectorAlimentosActivity">
 
-    <TextView
-        android:layout_width="1dp"
-        android:layout_weight="1"
-        android:layout_height="fill_parent"
-        android:text="Hola!"/>
     <fragment
         android:id="@+id/listFragment"
         android:name="com.arenoclif.alco.AlimentosListFragment"
         android:layout_width="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:layout_height="fill_parent"
         tools:layout="@layout/alimentos_list_fragment"
         />

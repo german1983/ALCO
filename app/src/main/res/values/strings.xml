@@ -9,4 +9,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_buscador">"Buscador de Alimentos "</string>
 
+    <!-- Labels de la lista de detalles -->
+    <string name="DetailCreditos">Créditos x Unidad:</string>
+    <string name="DetailUnidad">Unidad de Medida:</string>
 </resources>

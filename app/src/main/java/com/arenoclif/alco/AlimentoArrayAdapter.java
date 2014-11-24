@@ -38,12 +38,12 @@ public class AlimentoArrayAdapter extends ArrayAdapter<Alimento>{
         TextView nombre = (TextView) view.findViewById(R.id.alimentoNombre);
         nombre.setText(alimento.getNombre());
 
-        TextView unidadMedida = (TextView) view.findViewById(R.id.alimentoUM);
-        unidadMedida.setText(alimento.getUnidadMedida());
-
-        TextView creditos = (TextView) view.findViewById(R.id.alimentoCreditos);
-        double creditosNumero = alimento.getCreditos();
-        creditos.setText(String.valueOf(creditosNumero));
+//        TextView unidadMedida = (TextView) view.findViewById(R.id.alimentoUM);
+//        unidadMedida.setText(alimento.getUnidadMedida());
+//
+//        TextView creditos = (TextView) view.findViewById(R.id.alimentoCreditos);
+//        double creditosNumero = alimento.getCreditos();
+//        creditos.setText(String.valueOf(creditosNumero));
 
         return view;
     }
