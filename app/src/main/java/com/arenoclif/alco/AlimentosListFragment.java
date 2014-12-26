@@ -1,20 +1,22 @@
 package com.arenoclif.alco;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.ListFragment;
+import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-
 import com.arenoclif.alco.data.Alimento;
 import com.arenoclif.alco.data.AlimentoData;
 
 import java.util.List;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class AlimentosListFragment extends ListFragment {
 
     List<Alimento> alimentos = new AlimentoData().getAlimentos();
@@ -45,10 +47,6 @@ public class AlimentosListFragment extends ListFragment {
         return rootView;
     }
 
-    public interface Callbacks {
-        public void onItemSelected(Alimento alimento);
-    }
-
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Alimento alimento = alimentos.get(position);
@@ -60,5 +58,9 @@ public class AlimentosListFragment extends ListFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = (Callbacks) activity;
+    }
+
+    public interface Callbacks {
+        public void onItemSelected(Alimento alimento);
     }
 }

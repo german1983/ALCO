@@ -8,8 +8,22 @@
     <!-- Acciones de Menú -->
     <string name="action_settings">Settings</string>
     <string name="action_buscador">"Buscador de Alimentos "</string>
+    <string name="action_registro">"Registro de Comidas "</string>
 
     <!-- Labels de la lista de detalles -->
     <string name="DetailCreditos">Créditos x Unidad:</string>
     <string name="DetailUnidad">Unidad de Medida:</string>
+
+    <!-- Labels del registro -->
+    <string name="RegistroPeso">Peso:</string>
+    <string-array name="RegistroMomentos">
+        <item>1.Mañana</item>
+        <item>2.Media Mañana</item>
+        <item>3.Mediodía</item>
+        <item>4.Tarde</item>
+        <item>5.Media Tarde</item>
+        <item>6.Noche</item>
+        <item>7.Última Hora</item>
+        <item>8.Trasnoche</item>
+    </string-array>
 </resources>

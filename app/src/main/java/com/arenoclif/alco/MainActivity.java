@@ -38,6 +38,10 @@ public class MainActivity extends Activity {
             Intent intent = new Intent(this, SelectorAlimentosActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.action_registro) {
+            Intent intent = new Intent(this, RegistroComidasActivity.class);
+            startActivity(intent);
+        }
         if (id == R.id.action_settings) {
             ScreenUtility su = new ScreenUtility(this);
             Toast.makeText(this, "Width: " + su.getDpWidth() + "\nHeigth: " + su.getDpHeight(), Toast.LENGTH_LONG).show();
