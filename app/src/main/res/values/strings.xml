@@ -16,6 +16,10 @@
 
     <!-- Labels del registro -->
     <string name="RegistroPeso">Peso:</string>
+    <string name="lblPorcion">Porción</string>
+    <string name="lblBtnIncorporarAlimento">Incorporar el Alimento</string>
+    <string name="lblSeleccionHorario">Seleccione el horario:</string>
+    <string name="promptMomento">Seleccione el momento...</string>
     <string-array name="RegistroMomentos">
         <item>1.Mañana</item>
         <item>2.Media Mañana</item>
@@ -25,5 +29,14 @@
         <item>6.Noche</item>
         <item>7.Última Hora</item>
         <item>8.Trasnoche</item>
+    </string-array>
+    <string-array name="Contexturas">
+        <item>Chica</item>
+        <item>Mediana</item>
+        <item>Grande</item>
+    </string-array>
+    <string-array name="Sexos">
+        <item>Femenino</item>
+        <item>Masculino</item>
     </string-array>
 </resources>

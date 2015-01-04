@@ -1,6 +1,7 @@
 package com.arenoclif.alco.data;
 
 import android.content.Context;
+import android.os.Bundle;
 
 import com.arenoclif.alco.R;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -65,6 +67,43 @@ public class IngestaData {
 
         } while (i < ingestas.size());
         cantRnd = 0;
+    }
+
+    public IngestaData(Bundle bundle) {
+        double cantidad = bundle.getDouble(Ingesta.INGESTA_CANTIDAD);
+        String momento = bundle.getString(Ingesta.INGESTA_MOMENTO);
+        Bundle alimento = bundle.getBundle(Ingesta.INGESTA_ALIMENTO);
+        String alimentoNombre = alimento.getString(Alimento.ALIMENTO_NOMBRE);
+
+        if (ingestasDummy.containsKey(momento)) {
+            ingestasDummy.get(momento).add(alimentoNombre + " - " + cantidad);
+        } else {
+            List<String> lstIngesta = new ArrayList<String>();
+            lstIngesta.add(alimentoNombre + " - " + cantidad);
+            ingestasDummy.put(momento, lstIngesta);
+        }
+
+    }
+
+    public IngestaData(ArrayList<Ingesta> ingestas) {
+
+        Iterator<Ingesta> iterIngestas = ingestas.iterator();
+
+        while (iterIngestas.hasNext()) {
+            Ingesta ingesta = iterIngestas.next();
+            double cantidad = ingesta.getCantidad();
+            String momento = ingesta.getMomento();
+            Bundle alimento = ingesta.getAlimento().toBundle();
+            String alimentoNombre = alimento.getString(Alimento.ALIMENTO_NOMBRE);
+
+            if (ingestasDummy.containsKey(momento)) {
+                ingestasDummy.get(momento).add(alimentoNombre + " - " + cantidad);
+            } else {
+                List<String> lstIngesta = new ArrayList<String>();
+                lstIngesta.add(alimentoNombre + " - " + cantidad);
+                ingestasDummy.put(momento, lstIngesta);
+            }
+        }
     }
 
     public HashMap<String, List<String>> getIngestas() {

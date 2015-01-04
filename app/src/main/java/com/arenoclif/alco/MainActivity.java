@@ -2,15 +2,17 @@ package com.arenoclif.alco;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.arenoclif.alco.data.ScreenUtility;
-
 
 public class MainActivity extends Activity {
+
+    public static int REQUEST_PREFERENCES = 1002;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +45,25 @@ public class MainActivity extends Activity {
             startActivity(intent);
         }
         if (id == R.id.action_settings) {
-            ScreenUtility su = new ScreenUtility(this);
-            Toast.makeText(this, "Width: " + su.getDpWidth() + "\nHeigth: " + su.getDpHeight(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent();
+            intent.setClass(this, SettingsActivity.class);
+            startActivityForResult(intent, this.REQUEST_PREFERENCES);
         }
 
         return super.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == this.REQUEST_PREFERENCES) {
+            SharedPreferences misPreferencias =
+                    PreferenceManager.getDefaultSharedPreferences(this);
+            String pref1 = misPreferencias.getString(getResources()
+                    .getString(R.string.prefContexturaKey), "Error");
+            Toast.makeText(this, "Seleccionaste: " + pref1, Toast.LENGTH_LONG).show();
+        }
     }
 }

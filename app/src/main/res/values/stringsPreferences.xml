@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prefNombre">Nombre</string>
+    <string name="prefApellido">Apellido</string>
+    <string name="prefMail">e-Mail</string>
+    <string name="prefSexo">Sexo</string>
+    <string name="prefAltura">Altura</string>
+    <string name="prefContextura">Contextura</string>
+    <string name="prefPesoDeseado">Peso Deseado</string>
+    <string name="prefPesoInicial">Peso Inicial</string>
+    <string name="prefIMC">IMC</string>
+
+    <string name="prefNombreKey">Nombre</string>
+    <string name="prefApellidoKey">Apellido</string>
+    <string name="prefMailKey">e-Mail</string>
+    <string name="prefSexoKey">Sexo</string>
+    <string name="prefAlturaKey">Altura</string>
+    <string name="prefContexturaKey">Contextura</string>
+    <string name="prefPesoDeseadoKey">Peso Deseado</string>
+    <string name="prefPesoInicialKey">Peso Inicial</string>
+    <string name="prefIMCKey">IMC</string>
+
+</resources>

@@ -9,14 +9,14 @@ import java.util.List;
 public class AlimentoData {
     private List<Alimento> alimentos = new ArrayList<Alimento>();
 
-    public List<Alimento> getAlimentos(){
-        return alimentos;
+    public AlimentoData() {
+        alimentos.add(new Alimento("Papa", "Unidad", 2.0, 1, 1000));
+        alimentos.add(new Alimento("Maiz", "Gramo", 0.5, 1, 10000));
+        alimentos.add(new Alimento("Milanesa", "Gramo", 4.0, 2, 10000));
+
     }
 
-    public AlimentoData(){
-        alimentos.add(new Alimento("Papa", "Unidad", 2.0));
-        alimentos.add(new Alimento("Maiz", "Gramo", 0.5));
-        alimentos.add(new Alimento("Milanesa", "Gramo", 4.0));
-
+    public List<Alimento> getAlimentos() {
+        return alimentos;
     }
 }

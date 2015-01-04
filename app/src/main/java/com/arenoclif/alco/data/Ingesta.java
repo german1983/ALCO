@@ -1,23 +1,33 @@
 package com.arenoclif.alco.data;
 
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.Comparator;
 
 /**
  * Created by german1983 on 12/8/14.
  */
-public class Ingesta {
+public class Ingesta implements Parcelable {
     //Constants for field references
     public static final String INGESTA_ALIMENTO = "alimento";
     public static final String INGESTA_CANTIDAD = "cantidad";
     public static final String INGESTA_MOMENTO = "momento";
+    public static final String INGESTA = "com.arenoclif.ingesta";
+    public static final Parcelable.Creator<Ingesta> CREATOR = new Parcelable.Creator<Ingesta>() {
+        public Ingesta createFromParcel(Parcel in) {
+            return new Ingesta(in);
+        }
 
+        public Ingesta[] newArray(int size) {
+            return new Ingesta[size];
+        }
+    };
     // Atributos
     private Alimento alimento;
     private double cantidad;
     private String momento;
-
 
     public Ingesta(Bundle b) {
         setAlimento(new Alimento(b.getBundle(INGESTA_ALIMENTO)));
@@ -29,6 +39,12 @@ public class Ingesta {
         setCantidad(c);
         setAlimento(a);
         setMomento(m);
+    }
+
+    public Ingesta(Parcel in) {
+        setAlimento((Alimento) in.readParcelable(Alimento.class.getClassLoader()));
+        setCantidad(in.readDouble());
+        setMomento(in.readString());
     }
 
     public Alimento getAlimento() {
@@ -63,6 +79,17 @@ public class Ingesta {
         return b;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.getAlimento(), flags);
+        dest.writeDouble(this.getCantidad());
+        dest.writeString(this.getMomento());
+    }
 }
 
 class IngestaComparator implements Comparator<Ingesta> {

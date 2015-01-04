@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.arenoclif.alco.data.Alimento;
+import com.arenoclif.alco.data.Ingesta;
 import com.arenoclif.alco.data.IngestaData;
 
 import java.util.ArrayList;
@@ -22,12 +22,14 @@ import java.util.List;
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class RegistroComidasFragment extends Fragment {
-    Alimento alimento;
 
+    static ArrayList<Ingesta> ingestas = new ArrayList<Ingesta>();
+    IngestaData iData;
     RegistroComidasExpListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    Ingesta ingesta;
 
     public RegistroComidasFragment() {
 
@@ -36,23 +38,30 @@ public class RegistroComidasFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // bundle = savedInstanceState;
+        Bundle bundle = getArguments();
+        if (bundle != null && bundle.containsKey(Ingesta.INGESTA)) {
+            ingesta = bundle.getParcelable(Ingesta.INGESTA);
+            ingestas.add(ingesta);
+//            Parcelable[] parcelables = bundle.getParcelableArray(Ingesta.INGESTA);
+//            if (parcelables != null) {
+//                ingestas = Arrays.copyOf(parcelables, parcelables.length, Ingesta[].class);
+//            }
 
+
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.registro_fragment, container, false);
-
-
         listDataHeader = Arrays.asList(getResources().getStringArray(R.array.RegistroMomentos));
-
+        View rootView = inflater.inflate(R.layout.registro_fragment, container, false);
         // get the listview
         expListView = (ExpandableListView) rootView.findViewById(R.id.registroListView);
 
         // preparing list data
-        //prepareListData();
-        listDataChild = new IngestaData(this.getActivity().getApplicationContext()).getIngestas();
+        prepareListData();
 
         listAdapter = new RegistroComidasExpListAdapter(this.getActivity().getApplicationContext(), listDataHeader, listDataChild);
 
@@ -66,23 +75,10 @@ public class RegistroComidasFragment extends Fragment {
      * Preparing the list data
      */
     private void prepareListData() {
-        listDataChild = new HashMap<String, List<String>>();
-
-        // Adding child data
-        List<String> top250 = new ArrayList<String>();
-        top250.add("Leche");
-        top250.add("Chocolate");
-
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("Alfajor Terrabusi");
-        nowShowing.add("Vauquita Light");
-
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("Milanesa al Horno");
-        comingSoon.add("Papas al Horno");
-
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
+        if (ingesta == null)
+            iData = new IngestaData(this.getActivity().getApplicationContext());
+        else
+            iData = new IngestaData(ingestas);
+        listDataChild = iData.getIngestas();
     }
 }

@@ -40,6 +40,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.arenoclif.alco.MainActivity" />
         </activity>
+        <activity android:name=".SettingsActivity" />
     </application>
 
 </manifest>

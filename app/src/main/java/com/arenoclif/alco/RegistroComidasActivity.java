@@ -16,6 +16,10 @@ public class RegistroComidasActivity extends Activity {
 
         RegistroComidasFragment fragment = new RegistroComidasFragment();
 
+        Bundle b = getIntent().getExtras();
+
+        fragment.setArguments(b);
+
         getFragmentManager().beginTransaction()
                 .add(R.id.registroContainer, fragment)
                 .commit();

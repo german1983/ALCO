@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Catergory 1">
+        <EditTextPreference
+            android:key="@string/prefNombreKey"
+            android:title="@string/prefNombre" />
+        <EditTextPreference
+            android:key="@string/prefApellidoKey"
+            android:title="@string/prefApellido" />
+        <EditTextPreference
+            android:inputType="textEmailAddress"
+            android:key="@string/prefMailKey"
+            android:title="@string/prefMail" />
+        <EditTextPreference
+            android:inputType="numberDecimal"
+            android:key="@string/prefAlturaKey"
+            android:title="@string/prefAltura" />
+        <EditTextPreference
+            android:inputType="numberDecimal"
+            android:key="@string/prefPesoInicialKey"
+            android:title="@string/prefPesoInicial" />
+        <EditTextPreference
+            android:inputType="numberDecimal"
+            android:key="@string/prefPesoDeseadoKey"
+            android:title="@string/prefPesoDeseado" />
+        <ListPreference
+            android:entries="@array/Contexturas"
+            android:entryValues="@array/Contexturas"
+            android:key="@string/prefContexturaKey"
+            android:title="@string/prefContextura" />
+        <ListPreference
+            android:entries="@array/Sexos"
+            android:entryValues="@array/Sexos"
+            android:key="@string/prefSexoKey"
+            android:title="@string/prefSexo" />
+
+
+    </PreferenceCategory>
+</PreferenceScreen>
